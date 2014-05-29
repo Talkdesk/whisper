@@ -1,8 +1,15 @@
 #!/usr/bin/env python
 
 import os
+import platform
 from glob import glob
-from distutils.core import setup
+
+if os.environ.get('USE_SETUPTOOLS'):
+  from setuptools import setup
+  setup_kwargs = dict(zip_safe=0)
+else:
+  from distutils.core import setup
+  setup_kwargs = dict()
 
 
 setup(
